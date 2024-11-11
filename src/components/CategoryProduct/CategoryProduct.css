@@ -1,0 +1,17 @@
+.categoryproduct__title {
+  margin-bottom: 20px;
+}
+.categoryproduct__title::first-letter {
+  text-transform: uppercase;
+  color: #6c3eb8;
+}
+.categoryproduct__row {
+  background: #191919;
+  border-radius: 6px;
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+  flex-wrap: wrap;
+  row-gap: 20px;
+  padding: 24px;
+}
