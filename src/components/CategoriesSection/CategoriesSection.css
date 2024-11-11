@@ -32,6 +32,9 @@
   transition: 0.2s;
   cursor: default;
 }
+.categories__leftside-item::first-letter {
+  text-transform: uppercase;
+}
 .categories__leftside-item:hover {
   color: #8b57c6;
 }
