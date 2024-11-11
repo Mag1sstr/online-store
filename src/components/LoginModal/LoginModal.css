@@ -1,0 +1,62 @@
+.loginmodal {
+  opacity: 0;
+  visibility: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+
+  z-index: 100;
+  transition: 0.3s;
+  backdrop-filter: blur(5px);
+}
+.open__modal {
+  opacity: 1;
+  visibility: visible;
+}
+.loginmodal__form {
+  position: absolute;
+  width: 16%;
+  right: 0;
+  height: 100vh;
+  background: #191919;
+  border-left: 1px solid #292929;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+}
+.loginmodal__title {
+  font-size: 15px;
+  text-align: center;
+  margin-bottom: 24px;
+}
+.loginmodal__input {
+  font-size: 13px;
+  color: #fff;
+  /* outline: none; */
+  border: 1px solid #212123;
+  outline: none;
+  background: #212123;
+  padding: 12px 24px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+.loginmodal__input:focus {
+  border: 1px solid #6c3eb8;
+}
+.loginmodal__button {
+  background: #6c3eb8;
+  border: none;
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 6px;
+  color: #fff;
+  cursor: pointer;
+  padding: 10px 0;
+}
+.loginmodal__text {
+  text-align: center;
+  font-size: 12px;
+  margin-bottom: 5px;
+}
