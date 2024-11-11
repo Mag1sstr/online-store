@@ -1,6 +1,6 @@
 import "./CategoriesSection.css";
 
-import { Route, Routes } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import BigSale from "../BigSale/BigSale";
 import Basket from "../Basket/Basket";
 import { useEffect, useState } from "react";
@@ -15,7 +15,7 @@ export default function CategoriesSection() {
       setCategories(resp.data);
     });
   }, []);
-
+  const navigate = useNavigate();
   return (
     <section className="categories">
       <div className="conteiner">
@@ -25,7 +25,11 @@ export default function CategoriesSection() {
             <div className="categories__leftside-items">
               {categories?.map((item, index) => {
                 return (
-                  <p key={index} className="categories__leftside-item">
+                  <p
+                    onClick={() => navigate(`/categories/${item}`)}
+                    key={index}
+                    className="categories__leftside-item"
+                  >
                     {item}
                   </p>
                 );
@@ -44,10 +48,11 @@ export default function CategoriesSection() {
               </p>
             </div>
           </div>
-          <Routes>
+          <BigSale />
+          {/* <Routes>
             <Route path="/" element={<BigSale />} />
             <Route path="/basket" element={<Basket />} />
-          </Routes>
+          </Routes> */}
           {/* <div className="categories__rightside">
             <p className="categories__absolute-text">BIG SALE 20%</p>
             <div className="categories__rightside-inner">
