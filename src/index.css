@@ -3,6 +3,14 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  /* overflow-y: hidden; */
+}
+::-webkit-scrollbar {
+  width: 10px;
+  /* background-color: #191919; */
+}
+::-webkit-scrollbar-thumb {
+  background-color: #191919;
 }
 body {
   font-family: "Montserrat", sans-serif;

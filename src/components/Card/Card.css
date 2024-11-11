@@ -1,0 +1,44 @@
+.trending__card {
+  max-width: 230px;
+  background: #212123;
+  border-radius: 8px;
+  height: 100%;
+  padding-bottom: 8px;
+}
+.trending__card-image {
+  width: 230px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 8px 8px 0px 0px;
+  margin-bottom: 12px;
+}
+.trending__card-title {
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 5px;
+  padding: 0 12px;
+}
+.trending__card-text {
+  font-size: 12px;
+  font-weight: 500;
+  color: #b8b8b8;
+  padding: 0 12px;
+  margin-bottom: 28px;
+}
+.trending__card-row {
+  padding: 0 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+}
+.trending__card-price {
+  font-size: 20px;
+  font-weight: 700;
+  color: #6c3eb8;
+}
+.trending__card-counts {
+  font-size: 10px;
+  color: #576067;
+  font-weight: 500;
+}
