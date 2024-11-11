@@ -3,13 +3,20 @@ import logoImage from "../../images/logo.svg";
 import searchImage from "../../images/header/search.svg";
 import likedImage from "../../images/header/liked.svg";
 import basketImage from "../../images/header/basket.svg";
+import { useNavigate } from "react-router-dom";
 
 export default function Header() {
+  const navigate = useNavigate();
   return (
     <header className="header">
       <div className="conteiner">
         <div className="header__row">
-          <img src={logoImage} alt="logo" />
+          <img
+            onClick={() => navigate("/")}
+            style={{ cursor: "pointer" }}
+            src={logoImage}
+            alt="logo"
+          />
           <div className="header__user">
             <div className="header__user-image"></div>
             <p className="header__user-name">Unknown user</p>
@@ -28,7 +35,11 @@ export default function Header() {
           </div>
           <div className="header__icons">
             <img src={likedImage} alt="" />
-            <div className="header__basket-block">
+            <div
+              style={{ cursor: "pointer" }}
+              onClick={() => navigate("/basket")}
+              className="header__basket-block"
+            >
               <img src={basketImage} alt="" />
               <div className="header__basket-circle">1</div>
             </div>
