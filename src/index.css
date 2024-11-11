@@ -21,3 +21,10 @@ body {
   max-width: 1260px;
   margin: 0 auto;
 }
+.app {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
