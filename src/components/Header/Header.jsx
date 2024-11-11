@@ -4,9 +4,16 @@ import searchImage from "../../images/header/search.svg";
 import likedImage from "../../images/header/liked.svg";
 import basketImage from "../../images/header/basket.svg";
 import { useNavigate } from "react-router-dom";
+import { useContext, useState } from "react";
+import LoginModal from "../LoginModal/LoginModal";
+import { AuthContext } from "../../contexts/AuthContext";
 
 export default function Header() {
   const navigate = useNavigate();
+  const [clickModal, setClickModal] = useState(false);
+  const { user, setUser } = useContext(AuthContext);
+  console.log(clickModal);
+
   return (
     <header className="header">
       <div className="conteiner">
@@ -17,10 +24,38 @@ export default function Header() {
             src={logoImage}
             alt="logo"
           />
-          <div className="header__user">
-            <div className="header__user-image"></div>
-            <p className="header__user-name">Unknown user</p>
-          </div>
+          {user ? (
+            <div className="header__auth">
+              <p className="header__auth-name">
+                {`${user.name.firstname} ${user.name.lastname}(${user.email})`}
+              </p>
+              <p
+                onClick={() => {
+                  setUser(null);
+                  localStorage.setItem("token", null);
+                }}
+                className="header__auth-btn"
+              >
+                Выйти
+              </p>
+            </div>
+          ) : (
+            <div className="header__user">
+              <div className="header__user-image"></div>
+              <LoginModal
+                setClickModal={setClickModal}
+                style={clickModal ? "open__modal" : ""}
+              />
+              <p
+                onClick={() => {
+                  setClickModal(true);
+                }}
+                className="header__user-name"
+              >
+                Sign in
+              </p>
+            </div>
+          )}
           <div className="header__search">
             <img
               className="header__search-img"
