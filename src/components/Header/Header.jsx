@@ -11,8 +11,7 @@ import { AuthContext } from "../../contexts/AuthContext";
 export default function Header() {
   const navigate = useNavigate();
   const [clickModal, setClickModal] = useState(false);
-  const { user, setUser } = useContext(AuthContext);
-  console.log(clickModal);
+  const { user, setUser, curt } = useContext(AuthContext);
 
   return (
     <header className="header">
@@ -76,7 +75,7 @@ export default function Header() {
               className="header__basket-block"
             >
               <img src={basketImage} alt="" />
-              <div className="header__basket-circle">1</div>
+              <div className="header__basket-circle">{curt.length}</div>
             </div>
           </div>
         </div>

@@ -6,6 +6,10 @@ export const AuthContext = createContext();
 export default function AuthContextProvider({ children }) {
   const [user, setUser] = useState(null);
   const [token, setToken] = useState(localStorage.getItem("token"));
+
+  const [curt, setCurt] = useState([]);
+  console.log(curt);
+
   function parseJwt(token) {
     var base64Url = token.split(".")[1];
     var base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
@@ -50,6 +54,8 @@ export default function AuthContextProvider({ children }) {
         user: user,
         signIn: signIn,
         setUser: setUser,
+        setCurt: setCurt,
+        curt: curt,
       }}
     >
       {children}
