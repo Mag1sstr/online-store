@@ -3,6 +3,7 @@ import "./CategoryProduct.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Card from "../Card/Card";
+import Spinner from "../Spinner/Spinner";
 
 export default function CategoryProduct() {
   const [categoryData, setCategoryData] = useState(null);
@@ -16,6 +17,9 @@ export default function CategoryProduct() {
       });
   }, [name]);
   //   console.log(name);
+  if (!categoryData) {
+    return <Spinner />;
+  }
 
   return (
     <div className="categoryproduct">
