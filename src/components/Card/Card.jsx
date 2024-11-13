@@ -1,9 +1,16 @@
 import "./Card.css";
 import cardImage from "../../images/trendingSection/01.png";
+import { useNavigate } from "react-router-dom";
 
 export default function Card({ category, image, price, title, id }) {
+  const navigate = useNavigate();
   return (
-    <div className="trending__card">
+    <div
+      onClick={() => {
+        navigate(`/products/${id}`);
+      }}
+      className="trending__card"
+    >
       <img className="trending__card-image" src={image} alt="" />
       <p className="trending__card-title">{title}</p>
       <p className="trending__card-text">{category}</p>

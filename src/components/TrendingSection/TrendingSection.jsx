@@ -10,7 +10,6 @@ export default function TrendingSection() {
   useEffect(() => {
     axios.get("https://fakestoreapi.com/products?limit=5").then((resp) => {
       setProductData(resp.data);
-      console.log(resp.data);
     });
   }, []);
   if (!productData) {
