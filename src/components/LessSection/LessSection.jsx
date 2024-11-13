@@ -14,10 +14,41 @@ export default function LessSection() {
         // console.log(resp.data);
       });
   }, [limit]);
+
+  const [openSort, setOpenSort] = useState(false);
+  const [mainSort, setMainSort] = useState("Сортировать по:");
   return (
     <section className="lesssection">
       <div className="conteiner">
         <div className="lesssection__inner">
+          <div
+            onClick={() => setOpenSort(!openSort)}
+            className="lesssection__sort"
+          >
+            <div className="lesssection__item">{mainSort}</div>
+            <div
+              className={`lesssection__items ${openSort ? "open__sort" : ""}`}
+            >
+              <div
+                onClick={() => {
+                  setMainSort("Возрастанию цены");
+                  allData.sort((a, b) => a.price - b.price);
+                }}
+                className="lesssection__item"
+              >
+                Возрастанию цены
+              </div>
+              <div
+                onClick={() => {
+                  setMainSort("Уменьшению цены");
+                  allData.sort((a, b) => b.price - a.price);
+                }}
+                className="lesssection__item"
+              >
+                Уменьшению цены
+              </div>
+            </div>
+          </div>
           <h1 className="lesssection__title">All products</h1>
           <div className="lesssection__row">
             {allData?.map((item) => {
