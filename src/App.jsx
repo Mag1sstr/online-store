@@ -8,6 +8,7 @@ import TrendingSection from "./components/TrendingSection/TrendingSection";
 import Main from "./components/Main/Main";
 import Basket from "./components/Basket/Basket";
 import CategoryProduct from "./components/CategoryProduct/CategoryProduct";
+import ProductPage from "./components/ProductPage/ProductPage";
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
         <Route path="/" element={<Main />} />
         <Route path="/basket" element={<Basket />} />
         <Route path="/categories/:name" element={<CategoryProduct />} />
+        <Route path="/products/:productId" element={<ProductPage />} />
       </Routes>
 
       <Footer />
