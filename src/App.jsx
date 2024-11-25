@@ -9,6 +9,7 @@ import Main from "./components/Main/Main";
 import Basket from "./components/Basket/Basket";
 import CategoryProduct from "./components/CategoryProduct/CategoryProduct";
 import ProductPage from "./components/ProductPage/ProductPage";
+import SearchPage from "./components/SearchPage/SearchPage";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/basket" element={<Basket />} />
         <Route path="/categories/:name" element={<CategoryProduct />} />
         <Route path="/products/:productId" element={<ProductPage />} />
+        <Route path="/search" element={<SearchPage />} />
       </Routes>
 
       <Footer />
