@@ -1,22 +1,19 @@
 import { useParams } from "react-router-dom";
 import "./CategoryProduct.css";
-import { useEffect, useState } from "react";
-import axios from "axios";
+import { useEffect } from "react";
 import Card from "../Card/Card";
 import Spinner from "../Spinner/Spinner";
+import { useDispatch, useSelector } from "react-redux";
+import { getProductsWithCategory } from "../../store/categoriesSlice";
 
 export default function CategoryProduct() {
-  const [categoryData, setCategoryData] = useState(null);
   const { name } = useParams();
-
+  const dispatch = useDispatch();
+  const categoryData = useSelector((state) => state.category.categoryData);
   useEffect(() => {
-    axios
-      .get(`https://fakestoreapi.com/products/category/${name}`)
-      .then((resp) => {
-        setCategoryData(resp.data);
-      });
+    dispatch(getProductsWithCategory(name));
   }, [name]);
-  //   console.log(name);
+
   if (!categoryData) {
     return <Spinner />;
   }
