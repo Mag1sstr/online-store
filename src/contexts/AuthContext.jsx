@@ -8,7 +8,6 @@ export default function AuthContextProvider({ children }) {
   const [token, setToken] = useState(localStorage.getItem("token"));
 
   const [curt, setCurt] = useState([]);
-  console.log(curt);
 
   function parseJwt(token) {
     var base64Url = token.split(".")[1];
