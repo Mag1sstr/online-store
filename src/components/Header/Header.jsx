@@ -4,14 +4,30 @@ import searchImage from "../../images/header/search.svg";
 import likedImage from "../../images/header/liked.svg";
 import basketImage from "../../images/header/basket.svg";
 import { useNavigate } from "react-router-dom";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import LoginModal from "../LoginModal/LoginModal";
 import { AuthContext } from "../../contexts/AuthContext";
+import Footer from "../Footer/Footer";
+import { useDispatch, useSelector } from "react-redux";
+import { setSearchValue } from "../../store/categoriesSlice";
 
 export default function Header() {
   const navigate = useNavigate();
+  const dispatch = useDispatch();
+  const searchValue = useSelector((state) => state.category.searchValue);
   const [clickModal, setClickModal] = useState(false);
+  // const [searchValue, setSearchValue] = useState("");
   const { user, setUser, curt } = useContext(AuthContext);
+
+  useEffect(() => {
+    if (searchValue.trim().length) {
+      navigate("/search");
+    } else {
+      navigate("/");
+    }
+  }, [searchValue]);
+
+  // console.log(searchValue);
 
   return (
     <header className="header">
@@ -62,6 +78,8 @@ export default function Header() {
               alt="search"
             />
             <input
+              value={searchValue}
+              onChange={(e) => dispatch(setSearchValue(e.target.value))}
               className="header__search-input"
               type="text"
               placeholder="Search for anything..."
