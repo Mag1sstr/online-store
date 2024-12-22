@@ -5,6 +5,9 @@ import { useContext, useEffect, useState } from "react";
 import Spinner from "../Spinner/Spinner";
 import { AuthContext } from "../../contexts/AuthContext";
 
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 export default function ProductPage() {
   const [productInfo, setProductInfo] = useState(null);
   const { productId } = useParams();
@@ -21,6 +24,7 @@ export default function ProductPage() {
     <>
       {productInfo ? (
         <section className="productpage">
+          <ToastContainer />
           <div className="conteiner">
             <div className="productpage__inner">
               <div className="productpage__row">
@@ -64,6 +68,7 @@ export default function ProductPage() {
                         count: 1,
                       });
                       setCurt(newArr);
+                      toast.success("Добалено в корзину");
                     }}
                     className="productpage__button"
                   >
