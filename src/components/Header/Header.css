@@ -78,3 +78,32 @@
 .header__auth-btn:hover {
   color: crimson;
 }
+
+/* language */
+.header__lang {
+  position: relative;
+  z-index: 100;
+}
+.header__lang-drop {
+  visibility: hidden;
+  opacity: 0;
+  position: absolute;
+  transition: 0.1s;
+  top: 0;
+}
+.header__lang-item {
+  padding: 8px;
+  color: #fff;
+  transition: 0.1s;
+  cursor: pointer;
+}
+.header__lang-item:hover {
+  background: #fff;
+  color: #000;
+}
+
+.header__lang:hover .header__lang-drop {
+  visibility: visible;
+  opacity: 1;
+  top: 100%;
+}
