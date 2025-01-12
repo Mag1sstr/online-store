@@ -10,12 +10,14 @@ import { AuthContext } from "../../contexts/AuthContext";
 import Footer from "../Footer/Footer";
 import { useDispatch, useSelector } from "react-redux";
 import { setSearchValue } from "../../store/categoriesSlice";
+import { useTranslation } from "react-i18next";
 
 export default function Header() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const searchValue = useSelector((state) => state.category.searchValue);
   const [clickModal, setClickModal] = useState(false);
+  const [currLang, setCurrLang] = useState("EN");
   // const [searchValue, setSearchValue] = useState("");
   const { user, setUser, curt } = useContext(AuthContext);
 
@@ -26,6 +28,12 @@ export default function Header() {
       navigate("/");
     }
   }, [searchValue]);
+
+  const { t, i18n } = useTranslation();
+
+  function changeLanguage(lang) {
+    i18n.changeLanguage(lang);
+  }
 
   // console.log(searchValue);
 
@@ -67,7 +75,7 @@ export default function Header() {
                 }}
                 className="header__user-name"
               >
-                Sign in
+                {t("signin")}
               </p>
             </div>
           )}
@@ -82,11 +90,34 @@ export default function Header() {
               onChange={(e) => dispatch(setSearchValue(e.target.value))}
               className="header__search-input"
               type="text"
-              placeholder="Search for anything..."
+              placeholder={t("search")}
             />
           </div>
           <div className="header__icons">
-            <img src={likedImage} alt="" />
+            {/* <img src={likedImage} alt="" /> */}
+            <div className="header__lang">
+              <div className="header__lang-item">{currLang}</div>
+              <div className="header__lang-drop">
+                {/* <div
+                  onClick={() => {
+                    // changeLanguage("en");
+                    setCurrLang("EN");
+                  }}
+                  className="header__lang-item"
+                >
+                  EN
+                </div> */}
+                <div
+                  onClick={() => {
+                    changeLanguage(currLang === "EN" ? "ru" : "en");
+                    setCurrLang(currLang === "EN" ? "RU" : "EN");
+                  }}
+                  className="header__lang-item"
+                >
+                  {currLang === "EN" ? "RU" : "EN"}
+                </div>
+              </div>
+            </div>
             <div
               style={{ cursor: "pointer" }}
               onClick={() => navigate("/basket")}
